@@ -247,7 +247,7 @@
       <el-table-column label="项目号" width="110" show-overflow-tooltip>
         <template #default="scope">
           <span>
-            HY{{ scope.row.homepath.match(/\/(\d+)$/)[1]
+            GM{{ scope.row.homepath.match(/\/(\d+)$/)[1]
             }}{{ scope.row.id }}
           </span>
         </template>

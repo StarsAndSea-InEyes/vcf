@@ -1,11 +1,12 @@
 <template>
   <div class="app-container">
     <el-dialog v-model="geneDialogVisible" :title="geneHpoId + '对应基因'" width="70%">
-      <el-table :data="geneData" border max-height="70vh" v-loading="geneDataLoading">
-        <el-table-column label="tax_id" width="80" prop="taxId" fixed>
+      <el-table :data="geneData" border height="70vh" v-loading="geneDataLoading">
+        <el-table-column label="Symbol" prop="symbol" width="120" fixed/>
+
+        <el-table-column label="tax_id" width="80" prop="taxId" >
         </el-table-column>
         <el-table-column label="GeneID" prop="geneId" show-overflow-tooltip width="80" />
-        <el-table-column label="Symbol" prop="symbol" width="120" />
         <el-table-column label="LocusTag" prop="locusTag" show-overflow-tooltip width="100" />
         <el-table-column label="Synonyms" prop="synonyms" show-overflow-tooltip width="140" />
         <el-table-column label="dbXrefs" prop="dbXrefs" show-overflow-tooltip width="160" />
@@ -27,7 +28,7 @@
         @current-change="handleHpoGeneCurrentChange" />
 
     </el-dialog>
-    <el-dialog v-model="diseaseDialogVisible" :title="diseaseHpoId + '对应基因'" width="70%">
+    <el-dialog v-model="diseaseDialogVisible" :title="diseaseHpoId + '对应疾病'" width="70%">
       <el-table :data="dieaseData" border max-height="70vh" v-loading="dieaseDataLoading">
         <el-table-column property="diseaseId" label="diseaseId" width="200" />
         <el-table-column property="genes" label="genes" width="200" :formatter="formatterGenes" />
@@ -38,7 +39,7 @@
       </el-table>
     </el-dialog>
     <div class="home">
-      <el-table :data="hpoTableData" style="width: 100%" border element-loading-text="数据获取中..." v-loading="loading">
+      <el-table :data="hpoTableData" style="width: 100%" border element-loading-text="数据获取中..." v-loading="loading" height="70vh">
         <el-table-column label="HPO_ID" width="130">
           <template #default="scope">
             <el-link type="primary" @click="clickHpo(scope.row)">
